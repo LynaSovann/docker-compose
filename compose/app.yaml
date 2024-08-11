@@ -1,0 +1,16 @@
+services:
+    app:
+    image: 'docker-spring-boot-postgres:latest'
+    build: ../app
+    container_name: app
+    depends_on: 
+      - db
+    environment:
+      - POSTGRES_USER=lyna
+      - POSTGRES_PASSWORD=123
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=123
+    
+    ports:
+      - "8085:8080"
